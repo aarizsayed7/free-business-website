@@ -1,5 +1,7 @@
 # Free Business Website
 
+[![Check](https://github.com/aarizsayed7/free-business-website/actions/workflows/check.yml/badge.svg)](https://github.com/aarizsayed7/free-business-website/actions/workflows/check.yml)
+
 A free, open-source website template for small and local businesses: shops, bakeries, salons, clinics, workshops, tutors.
 
 **You edit one file (`site.config.js`) and get a complete, mobile-friendly website.** You don't need coding skills, a build step, a server or a monthly fee.
@@ -41,6 +43,10 @@ The `examples/` folder has ready configs for other kinds of business. To use one
 
 The example businesses, phone numbers and addresses are made up. Replace them all.
 
+## Other languages
+
+Set `language` and paste a file from [`translations/`](translations/) into `labels` in your config to show the headings and buttons in another language.
+
 ## File layout
 
 ```
@@ -48,6 +54,8 @@ index.html        page structure + styles
 app.js            fills the page from the config (no need to edit)
 site.config.js    YOUR business details (edit this)
 examples/         sample configs
+translations/     headings and buttons in other languages
+tests/            automatic checks (run on every pull request)
 ```
 
 ## Contributing
@@ -59,7 +67,13 @@ Contributions are welcome, especially:
 - Accessibility and performance improvements
 - New optional sections (menu/price list, FAQ, team)
 
-Open an issue to discuss an idea, or send a pull request. Please keep the project dependency-free and editable from a single config file.
+Start with [CONTRIBUTING.md](CONTRIBUTING.md). Every pull request is checked automatically, and I aim to review within 48 hours.
+
+## Contributors
+
+Everyone with a merged pull request is listed here. Want to be next? See [CONTRIBUTING.md](CONTRIBUTING.md) and the [good first issues](https://github.com/aarizsayed7/free-business-website/labels/good%20first%20issue).
+
+- [@aarizsayed7](https://github.com/aarizsayed7), maintainer
 
 ## License
 

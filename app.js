@@ -56,6 +56,22 @@
   document.title = b.name ? b.name + (b.tagline ? " — " + b.tagline : "") : "Business Website";
   document.querySelector('meta[name="description"]').setAttribute("content", b.about || b.tagline || "");
 
+  // ---- Labels (section headings etc.; translate via SITE.labels) ----
+  var L = {
+    about: "About us", services: "What we offer", gallery: "Gallery", reviews: "What customers say",
+    contact: "Visit or contact us", hours: "Opening hours", phone: "Phone", email: "Email", address: "Address",
+    whatsappUs: "WhatsApp us", call: "Call", yourName: "Your name", yourMessage: "Your message",
+    navAbout: "About", navServices: "Services", navGallery: "Gallery", navContact: "Contact",
+  };
+  Object.keys(S.labels || {}).forEach(function (k) { if (S.labels[k]) L[k] = String(S.labels[k]); });
+  if (S.language) document.documentElement.lang = String(S.language);
+  Array.prototype.forEach.call(document.querySelectorAll("[data-label]"), function (n) {
+    n.textContent = L[n.getAttribute("data-label")] || n.textContent;
+  });
+  Array.prototype.forEach.call(document.querySelectorAll("[data-label-placeholder]"), function (n) {
+    n.placeholder = L[n.getAttribute("data-label-placeholder")] || n.placeholder;
+  });
+
   // ---- Header ----
   var brand = $("brand");
   var logo = safeUrl(b.logo);
@@ -72,8 +88,8 @@
     h.style.backgroundImage = "linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55)), url(\"" + hero.replace(/"/g, "%22") + "\")";
   }
   var actions = $("hero-actions");
-  if (waLink()) actions.appendChild(el("a", { class: "btn", href: waLink("Hi " + (b.name || "") + ", "), target: "_blank", rel: "noopener" }, ["WhatsApp us"]));
-  if (telLink()) actions.appendChild(el("a", { class: "btn ghost", href: telLink() }, ["Call " + c.phone]));
+  if (waLink()) actions.appendChild(el("a", { class: "btn", href: waLink("Hi " + (b.name || "") + ", "), target: "_blank", rel: "noopener" }, [L.whatsappUs]));
+  if (telLink()) actions.appendChild(el("a", { class: "btn ghost", href: telLink() }, [L.call + " " + c.phone]));
 
   // ---- About ----
   if (b.about) $("about-text").textContent = b.about; else hide("about");
@@ -104,9 +120,9 @@
     list.appendChild(el("dt", {}, [label]));
     list.appendChild(el("dd", {}, [href ? el("a", { href: href }, [value]) : value]));
   }
-  row("Phone", c.phone, telLink());
-  row("Email", c.email, c.email ? "mailto:" + c.email : "");
-  row("Address", c.address);
+  row(L.phone, c.phone, telLink());
+  row(L.email, c.email, c.email ? "mailto:" + c.email : "");
+  row(L.address, c.address);
 
   var hours = S.hours || [];
   hours.forEach(function (h) {
@@ -137,7 +153,7 @@
   }
 
   // ---- Nav (only sections that are showing) ----
-  [["about", "About"], ["services", "Services"], ["gallery", "Gallery"], ["contact", "Contact"]].forEach(function (p) {
+  [["about", L.navAbout], ["services", L.navServices], ["gallery", L.navGallery], ["contact", L.navContact]].forEach(function (p) {
     if (!$(p[0]).hidden) $("nav").appendChild(el("a", { href: "#" + p[0] }, [p[1]]));
   });
 

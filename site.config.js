@@ -53,6 +53,15 @@ window.SITE = {
     font: "Inter", // any Google Font name
   },
 
+  // Page language code (e.g. "en", "hi", "mr") and optional translations of
+  // the fixed words on the page. Leave out any you don't need to change.
+  // Ready translations are in the translations/ folder: copy one into labels.
+  language: "en",
+  labels: {
+    // about: "About us",
+    // services: "What we offer",
+  },
+
   // Text on the WhatsApp enquiry button / form
   enquiry: {
     heading: "Place an order or ask a question",

@@ -136,40 +136,40 @@
 
     <section id="about">
       <div class="wrap">
-        <h2>About us</h2>
+        <h2 data-label="about">About us</h2>
         <p class="muted" id="about-text"></p>
       </div>
     </section>
 
     <section id="services">
       <div class="wrap">
-        <h2>What we offer</h2>
+        <h2 data-label="services">What we offer</h2>
         <div class="grid" id="services-grid"></div>
       </div>
     </section>
 
     <section id="gallery">
       <div class="wrap">
-        <h2>Gallery</h2>
+        <h2 data-label="gallery">Gallery</h2>
         <div class="gallery" id="gallery-grid"></div>
       </div>
     </section>
 
     <section id="reviews">
       <div class="wrap">
-        <h2>What customers say</h2>
+        <h2 data-label="reviews">What customers say</h2>
         <div class="grid" id="reviews-grid"></div>
       </div>
     </section>
 
     <section id="contact">
       <div class="wrap">
-        <h2>Visit or contact us</h2>
+        <h2 data-label="contact">Visit or contact us</h2>
         <div class="contact">
           <div>
             <dl id="contact-list"></dl>
             <div id="hours-block">
-              <h3 style="margin-top:24px">Opening hours</h3>
+              <h3 style="margin-top:24px" data-label="hours">Opening hours</h3>
               <table class="hours" id="hours-table"></table>
             </div>
           </div>
@@ -182,8 +182,8 @@
       <div class="wrap">
         <h2 id="enquiry-heading"></h2>
         <form class="enquiry" id="enquiry-form">
-          <input name="name" placeholder="Your name" required />
-          <textarea name="message" placeholder="Your message" required></textarea>
+          <input name="name" placeholder="Your name" data-label-placeholder="yourName" required />
+          <textarea name="message" placeholder="Your message" data-label-placeholder="yourMessage" required></textarea>
           <button class="btn" type="submit" id="enquiry-button"></button>
         </form>
       </div>
