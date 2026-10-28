@@ -41,6 +41,10 @@ window.SITE = {
     // { name: "Customer name", text: "What they said." },
   ],
 
+  faq: [
+    // { q: "Do you deliver?", a: "Yes, within 3 km." },
+  ],
+
   social: {
     instagram: "", // full URL
     facebook: "",
