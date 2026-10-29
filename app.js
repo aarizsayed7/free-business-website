@@ -61,7 +61,7 @@
     about: "About us", services: "What we offer", gallery: "Gallery", reviews: "What customers say",
     contact: "Visit or contact us", hours: "Opening hours", phone: "Phone", email: "Email", address: "Address",
     whatsappUs: "WhatsApp us", call: "Call", yourName: "Your name", yourMessage: "Your message",
-    navAbout: "About", navServices: "Services", navGallery: "Gallery", navContact: "Contact",
+    navAbout: "About", navServices: "Services", navGallery: "Gallery", navContact: "Contact", faq: "Frequently asked questions",
   };
   Object.keys(S.labels || {}).forEach(function (k) { if (S.labels[k]) L[k] = String(S.labels[k]); });
   if (S.language) document.documentElement.lang = String(S.language);
@@ -112,6 +112,13 @@
     $("reviews-grid").appendChild(el("blockquote", { class: "card" }, [el("p", {}, ["“" + (t.text || "") + "”"]), el("cite", {}, ["— " + (t.name || "")])]));
   });
   if (!reviews.length) hide("reviews");
+
+  // ---- FAQ ----
+  var faqs = S.faq || [];
+  faqs.forEach(function (item) {
+    $("faq-list").appendChild(el("details", {}, [el("summary", {}, [String(item.q || "")]), el("p", {}, [String(item.a || "")])]));
+  });
+  if (!faqs.length) hide("faq");
 
   // ---- Contact ----
   var list = $("contact-list");
@@ -182,4 +189,16 @@
   script.type = "application/ld+json";
   script.textContent = JSON.stringify(ld);
   document.head.appendChild(script);
+  if (faqs.length) {
+    var faqScript = document.createElement("script");
+    faqScript.type = "application/ld+json";
+    faqScript.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faqs.map(function (item) {
+        return { "@type": "Question", name: item.q, acceptedAnswer: { "@type": "Answer", text: item.a } };
+      }),
+    });
+    document.head.appendChild(faqScript);
+  }
 })();
